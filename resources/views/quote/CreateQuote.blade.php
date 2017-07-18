@@ -238,7 +238,7 @@ MetroGistics :: Get a Quote!
                                         MetroGistics<br />
                                         <strong>877-571-6235</strong><br />
                                         sales@metrogistics.com<br />
-                                        <strong>Fax:</strong> 314-735-4176<br />
+                                        <strong>Fax:</strong> 314-735-4341<br />
                                         <strong>Hours:</strong> 7:30AM to 9PM CT<br />
                                         7 Days a Week<br />
 
