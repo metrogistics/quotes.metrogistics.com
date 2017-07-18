@@ -128,7 +128,9 @@
 
     <div class="row">
         <div id="header">
-            <img src="http://new.metrogistics.com/wp-content/uploads/2015/03/logo.png">
+            <a href="http://metrogistics.com">
+                <img src="http://new.metrogistics.com/wp-content/uploads/2015/03/logo.png">
+            </a>
         </div>
     </div>
 
