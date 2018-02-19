@@ -15,11 +15,14 @@ class MetroQuickQuotes extends Model {
         $email_token = rand(0, 9999999);
         $QuoteEmailAddress = "Quotes+" . $email_token . "@metrogistics.com";
         $QuoteSubject = "Quote Request: " . $QuickQuote->FirstName . " " . $QuickQuote->LastName;
-
         Mail::send('emails.QuickQuote', ['QuickQuote' => $QuickQuote], function ($m) use ($QuickQuote, $QuoteEmailAddress, $QuoteSubject) {
             //
             $m->from($QuoteEmailAddress, 'Quote Generator');
-            $m->to('sales@metrogistics.com', 'Sales')->subject($QuoteSubject);
+            if($QuickQuote->request_subdomain == 'quotes') {
+                $m->to('sales@metrogistics.com', 'Sales')->subject($QuoteSubject);
+            } else {
+                $m->to('niadasupport@metrogistics.com', 'NIADA Sales')->subject($QuoteSubject);
+            }
             //$m->from('c.clayton+quote@metrogistics.com', 'Quote Generator');
             //$m->to('c.clayton@metrogistics.com', 'Sales')->subject('subject');
 
@@ -39,7 +42,11 @@ class MetroQuickQuotes extends Model {
         Mail::send('emails.Sent_QuickQuote', ['QuickQuote' => $QuickQuote], function ($m) use ($QuickQuote, $QuoteEmailAddress, $QuoteSubject) {
             //
             $m->from($QuoteEmailAddress, 'MetroGistics Quotes');
-            $m->replyTo('sales@metrogistics.com', 'Sales');
+            if($QuickQuote->request_subdomain == 'quotes') {
+                $m->replyTo('sales@metrogistics.com', 'Sales');
+            } else {
+                $m->replyTo('niada@metrogistics.com', 'NIADA Sales');
+            }
             $m->to($QuickQuote->EmailAddress, $QuickQuote->FirstName . " " . $QuickQuote->LastName)->subject($QuoteSubject);
 
         });

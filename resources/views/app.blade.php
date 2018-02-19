@@ -99,9 +99,9 @@
 
 
         }
-        #header img {
+/*        #header img {
             width: 100%;
-        }
+        }*/
         #call {
             display: block;
         }
@@ -129,7 +129,11 @@
     <div class="row">
         <div id="header">
             <a href="http://metrogistics.com">
-                <img src="http://new.metrogistics.com/wp-content/uploads/2015/03/logo.png">
+                @if(strpos(Request::url(), 'quotes') == true)
+                    <img src="http://new.metrogistics.com/wp-content/uploads/2015/03/logo.png">
+                @else
+                    <img src="https://s3-us-west-1.amazonaws.com/whitelabel-cdn/metro_niada_logo.png">
+                @endif
             </a>
         </div>
     </div>

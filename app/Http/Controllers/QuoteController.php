@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Input;
+use Request;
 use App\MetroQuickQuotes;
 
 class QuoteController extends Controller {
@@ -37,7 +38,6 @@ class QuoteController extends Controller {
     }
 
     public function Quote(){
-
         $quote = new MetroQuickQuotes();
 
         $quote->FirstName = Input::get('FirstName');
@@ -55,6 +55,9 @@ class QuoteController extends Controller {
         $quote->dAreaId = Input::get('dAreaId');
         $quote->dAreaName = Input::get('dAreaName');
         $quote->Details = Input::get('Details');
+        $url_strings = explode('.', Request::url());
+        $takeouthttp = explode('/', $url_strings[0]);
+        $quote->request_subdomain = $takeouthttp[2];
 
         $quote->save();
 

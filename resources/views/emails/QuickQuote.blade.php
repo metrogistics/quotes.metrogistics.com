@@ -18,7 +18,7 @@ Details:<br />
 <br />
 <br />
 <br />
-Quote:  <a href="http://quotes.metrogistics.com/SendQuote/{!! $QuickQuote->id !!}" target="_blank">Send Quote Response</a><br />
+Quote:  <a href="http://{{$QuickQuote->request_subdomain}}.metrogistics.com/SendQuote/{!! $QuickQuote->id !!}" target="_blank">Send Quote Response</a><br />
 <br />
 <br />
 <br />
