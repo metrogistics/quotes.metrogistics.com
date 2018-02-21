@@ -54,7 +54,11 @@ MetroGistics :: Get a Quote!
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                            @if(strpos(Request::url(), 'quotes') == true)
                             <h3 class="panel-title">MetroGistics - Quotes</h3>
+                            @else
+                            <h3 class="panel-title">NIADA Member Preferred Pricing Quotes</h3>
+                            @endif
                         </div>
                         <div class="panel-body ">
 
@@ -229,7 +233,13 @@ MetroGistics :: Get a Quote!
                                 <div>
                                     <h1>Get a Quote</h1>
                                     <p>
-                                        If you have any questions, please call or email us at sales@metrogistics.com.<br /><br />
+                                        If you have any questions, please call or email us at 
+                                        @if(strpos(Request::url(), 'quotes') == true)
+                                        sales@metrogistics.com.
+                                        @else
+                                        niadasupport@metrogistics.com
+                                        @endif
+                                        <br /><br />
                                         Rates posted are for typical passenger vehicles, light duty trucks, and SUVs. Additional fees may apply for inoperable or over-sized units and/or moves that are in difficult locations, low volume shipping lanes and lanes that involve tolls. These rates include any and all fuel surcharges.
                                     </p>
                                     <br />
@@ -237,7 +247,11 @@ MetroGistics :: Get a Quote!
                                     <div class="well">
                                         MetroGistics<br />
                                         <strong>877-571-6235</strong><br />
+                                        @if(strpos(Request::url(), 'quotes') == true)
                                         sales@metrogistics.com<br />
+                                        @else
+                                        niadasupport@metrogistics.com<br />
+                                        @endif
                                         <strong>Fax:</strong> 314-735-4341<br />
                                         <strong>Hours:</strong> 7:30AM to 9PM CT<br />
                                         7 Days a Week<br />

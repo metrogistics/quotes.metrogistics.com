@@ -14,7 +14,7 @@ class MetroQuickQuotes extends Model {
 
         $email_token = rand(0, 9999999);
         $QuoteEmailAddress = "Quotes+" . $email_token . "@metrogistics.com";
-        $QuoteSubject = "Quote Request: " . $QuickQuote->FirstName . " " . $QuickQuote->LastName;
+        $QuoteSubject = $this->getEmailSubject($QuickQuote);
         Mail::send('emails.QuickQuote', ['QuickQuote' => $QuickQuote], function ($m) use ($QuickQuote, $QuoteEmailAddress, $QuoteSubject) {
             //
             $m->from($QuoteEmailAddress, 'Quote Generator');
@@ -52,6 +52,15 @@ class MetroQuickQuotes extends Model {
         });
 
         return true;
+    }
+
+    public function getEmailSubject(MetroQuickQuotes $quote)
+    {
+        if($quote->request_subdomain == 'quotes') {
+            return "Quote Request: " . $quote->FirstName . " " . $quote->LastName;
+        } else {
+            return "NIADA Preferred Member Quote: " . $quote->FirstName . " " . $quote->LastName;
+        }
     }
 
 }
